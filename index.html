@@ -8,44 +8,61 @@
   
   <title>Frontend Mentor | Notifications page</title>
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
+  <!-- Font -->
+  <link rel="stylesheet" href="./style/font.css">
+<!--  <link rel="preconnect" href="https://fonts.googleapis.com">-->
+<!--  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>-->
+<!--  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans@wght500;800&display=swap" rel="stylesheet">-->
+
+  <!--   Tailwind play cdn and local tailwind config file -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="src/tailwind.config.js"></script>
+
+  <!-- Alpine.js  -->
+  <!-- Alpine Plugins -->
+  <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/persist@3.x.x/dist/cdn.min.js"></script>
+
+  <!-- Alpine.js core  -->
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
 </head>
-<body>
+<body class="bg-gray-blue-50 text-gray-blue-500">
 
-  Notifications 3
-
-  Mark all as read
-
-  Mark Webber reacted to your recent post My first tournament today!
-  1m ago
-
-  Angela Gray followed you
-  5m ago
-
-  Jacob Thompson has joined your group Chess Club
-  1 day ago
-
-  Rizky Hasanuddin sent you a private message
-  5 days ago
-  Hello, thanks for setting up the Chess Club. I've been a member for a few weeks now and 
-  I'm already having lots of fun and improving my game.
-
-  Kimberly Smith commented on your picture
-  1 week ago
-
-  Nathan Peterson reacted to your recent post 5 end-game strategies to increase your win rate
-  2 weeks ago
-
-  Anna Kim left the group Chess Club
-  2 weeks ago
-  
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
+ <main x-data="Notifications()">
+  <section class="bg-white mx-auto max-w-5xl">
+    <section>
+      <div class="w-full inline-flex justify-between items-center">
+        <h1>Notifications</h1>
+        <span class="block py-1.5 px-3 rounded bg-blue text-gray-blue-50">
+          <span x-text="notificationsCount"></span>
+        </span>
+        <button type="button">Mark all as read</button>
+      </div>
+    </section>
+  </section>
+   <section>
+     <ul>
+       <template x-for="notification in notifications" :key="notification.id">
+         <li class="flex">
+           <img :src="notification.image" alt="user avatar">
+           <div class="flex gap-4">
+             <div class="inline-flex gap-2">
+               <p x-text="notification.userName"></p>
+               <p x-text="notification.message"></p>
+               <span x-show="!notification.status" class="block rounded-full w-5 h-5 bg-red"></span>
+             </div>
+             <p x-text="notification.postDate"></p>
+             <p x-text="notification.extendedMessage"></p>
+           </div>
+         </li>
+       </template>
+     </ul>
+   </section>
+ </main>
+ <footer class="fixed bottom-0 inset-x-0 text-center text-xs py-2 bg-gray-blue-100 text-blue-500 opacity-0 translate-y-2 hover:opacity-100 hover:translate-y-0 transform transition ease-in-out duration-150">
+   Challenge by <a class="underline hover:text-gradient-end" href="https://www.frontendmentor.io/challenges/notifications-page-DqK5QAmKbC" target="_blank">Frontend Mentor</a>.
+   Coded by <a class="underline hover:text-gradient-end" href="https://www.frontendmentor.io/profile/wendyhamel" target="_blank">Wendy Hamel</a>.
+ </footer>
 </body>
+<script type="text/javascript" src="src/manageNotifications.js"></script>
 </html>
