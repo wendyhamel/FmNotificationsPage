@@ -8,3 +8,7 @@
 	src: url(/assets/fonts/static/PlusJakartaSans-ExtraBold.ttf);
 	font-weight: 800;
 }
+
+body{
+	background: aqua;
+}
