@@ -40,16 +40,17 @@
    <section>
      <ul>
        <template x-for="notification in notifications" :key="notification.id">
-         <li class="flex">
+         <li class="flex items-center">
            <img :src="notification.image" alt="user avatar">
-           <div class="flex gap-4">
+           <div class="">
              <div class="inline-flex gap-2">
-               <p x-text="notification.userName"></p>
-               <p x-text="notification.message"></p>
+               <p class="font-bold" x-text="notification.userName"></p>
+               <p class="" x-text="selectedMessage(notification.message)"></p>
                <span x-show="!notification.status" class="block rounded-full w-5 h-5 bg-red"></span>
              </div>
              <p x-text="notification.postDate"></p>
              <p x-text="notification.extendedMessage"></p>
+             <img src="assets/images/image-chess.webp" alt="user avatar">
            </div>
          </li>
        </template>
